@@ -1,4 +1,6 @@
-// import block styles
-import './eb-button.scss';
 
-console.log('EB : Button');
+
+// import block styles
+import './styles/eb-button.scss';
+
+

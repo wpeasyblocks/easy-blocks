@@ -25,8 +25,13 @@
   "homepage": "https://github.com/wpeasyblocks/easy-blocks#readme",
   "devDependencies": {
     "@babel/core": "^7.15.0",
-    "@babel/preset-react": "^7.14.5",
     "@wordpress/babel-preset-default": "^6.3.1",
+    "@wordpress/block-editor": "^7.0.0",
+    "@wordpress/blocks": "^11.0.0",
+    "@wordpress/components": "^15.0.0",
+    "@wordpress/editor": "^11.0.0",
+    "@wordpress/element": "^4.0.0",
+    "@wordpress/i18n": "^4.2.1",
     "autoprefixer": "^10.3.1",
     "babel-loader": "^8.2.2",
     "cross-env": "^7.0.3",
@@ -42,7 +47,5 @@
     "webpack-bundle-tracker": "^1.2.0",
     "webpack-cli": "^4.7.2"
   },
-  "dependencies": {
-    "@wordpress/blocks": "^11.0.0"
-  }
+  "dependencies": {}
 }

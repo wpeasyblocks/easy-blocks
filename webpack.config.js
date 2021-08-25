@@ -6,20 +6,26 @@ const BundleTracker = require('webpack-bundle-tracker');
 // development mode
 const devMode = process.env.NODE_ENV !== 'production';
 
+// extract block styles
+const BlockCssPlugin = new MiniCssExtractPlugin({
+    filename: devMode ? '[name].css' : '[name].min.css'
+});
+
+
 module.exports = {
     context: __dirname,
     mode: devMode ? 'development' : 'production',
-    entry: { blocks: './blocks/blocks.js' },
-    // entry  : { './assets/js/editor.blocks': './blocks/blocks.js' },
+    entry: {
+        blocks: './blocks/blocks.js',
+    },
     output : {
         path    : path.resolve(__dirname, 'assets'),
-        filename: '[name].js',
+        // filename: '[name].js',
     },
     module: {
         rules: [
             {
-                test: /\.js$/,
-                // test: /\.js$|jsx/,
+                test: /\.js$|jsx/,
                 exclude: [
                     path.resolve( __dirname, 'node_modules' ),
                     path.resolve( __dirname, 'assets' ),
@@ -27,9 +33,6 @@ module.exports = {
                 use: [
                     {
                         loader: 'babel-loader',
-                        options: {
-                            presets: [ '@babel/preset-react' ],
-                        },
                     },
                 ],
             },
@@ -46,11 +49,8 @@ module.exports = {
                         loader: 'sass-loader',
                         options: {
                             sassOptions: {
-                                // indentWidth: 2,
-                                includePaths: [
-                                    path.resolve( __dirname, 'blocks/styles' )
-                                ],
-                                outputStyle: 'expanded',
+                                indentType: "tab",
+                                indentWidth: 1,
                             },
                         },
                     },
@@ -67,12 +67,9 @@ module.exports = {
         ],
     },
     plugins: [
-        new MiniCssExtractPlugin({
-            filename: devMode ? '[name].css' : '[name].min.css',
-            chunkFilename: devMode ? '[id].css' : '[id].min.css',
-        }),
-        new BundleTracker({
-            filename: 'logs/webpack-stats.json',
-        })
+        BlockCssPlugin,
+        // new BundleTracker({
+        //     filename: 'logs/webpack-stats.json',
+        // })
     ],
 };

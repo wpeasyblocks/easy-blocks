@@ -1,1 +1,1 @@
-import './eb-button/eb-button';
+import './block-button/block-button';
